@@ -1,16 +1,11 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
 import { startOfHour, parseISO, isEqual } from 'date-fns';
+// defining 'types' from '../models' of values in the vars down bellow
+import Appointment from '../models/Appointment';
 
 const appointmentsRouter = Router();
 
-// defining 'types' of values in the vars down bellow
-interface Appointment {
-  id: string;
-  provider: string;
-  date: Date;
-}
-// attribuating interface declared above 'Appointment[]'
+// attribuating interface declared above from 'models' 'Appointment[]'
 const appointments: Appointment[] = []
 
 appointmentsRouter.post('/', (req, res) => {
@@ -29,11 +24,7 @@ appointmentsRouter.post('/', (req, res) => {
       .json({ message: 'Already booked' });
     }
 
-  const appointment = {
-    id: uuid(),
-    provider,
-    date: formatedDate,
-  }
+  const appointment = new Appointment(provider, formatedDate);
 
   appointments.push(appointment);
 
