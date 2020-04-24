@@ -2,6 +2,15 @@ import { isEqual } from 'date-fns';
 // defining 'types' from '../models' of values in the vars down bellow
 import Appointment from '../models/Appointment';
 
+
+/**
+ * Define types of params in a Data transfer object DTO
+ */
+interface CreateAppointmentDTO {
+  provider: string;
+  date: Date;
+}
+
 // private the var isn't accecible out of the class;
 // 'type' defined;
 class AppointmentsRepository {
@@ -25,10 +34,12 @@ class AppointmentsRepository {
     return findAppointment || null;
   }
 
-  // 'public' can be used out the class;
-  // declared 'types' down bellow;
-  public create(provider: string, date: Date,): Appointment {
-    const appointment = new Appointment(provider, date);
+  /**
+   *  declared 'types' down bellow with param insinde 'CreateAppointmentDTO
+   *  'public' can be used out the class;
+   *  */
+    public create({ provider, date }: CreateAppointmentDTO): Appointment {
+    const appointment = new Appointment({provider, date});
 
     this.appointments.push(appointment);
 

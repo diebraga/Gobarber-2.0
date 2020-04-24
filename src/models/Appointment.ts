@@ -8,7 +8,7 @@ class Appointment {
   date: Date;
   // id will be always a {uuid} 'unique universal id'
 // declaring value types
-  constructor(provider: string, date: Date,) {
+  constructor({provider, date}: Omit<Appointment, 'id'> ) {
     this.id = uuid();
     this.provider = provider;
     this.date = date;
