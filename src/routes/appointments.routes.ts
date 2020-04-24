@@ -1,15 +1,16 @@
 import { Router } from 'express';
-import { startOfHour, parseISO, isEqual } from 'date-fns';
-// defining 'types' from '../models' of values in the vars down bellow
-import Appointment from '../models/Appointment';
+import { startOfHour, parseISO } from 'date-fns';
+
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
-// var saves all types declared of function needed to create appointments.
+
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
-// attribuating interface declared above from 'models' 'Appointment[]'
-// temporary var save appointments
-// const appointments: Appointment[] = []
+appointmentsRouter.get('/', (req, res) => {
+  const appointments = appointmentsRepository.all();
+
+  return res.json(appointmentsRepository);
+})
 
 appointmentsRouter.post('/', (req, res) => {
   const { provider, date } = req.body;

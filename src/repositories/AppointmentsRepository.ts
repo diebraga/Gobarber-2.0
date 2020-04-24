@@ -1,4 +1,5 @@
 import { isEqual } from 'date-fns';
+// defining 'types' from '../models' of values in the vars down bellow
 import Appointment from '../models/Appointment';
 
 // private the var isn't accecible out of the class;
@@ -10,6 +11,11 @@ class AppointmentsRepository {
   constructor() {
     this.appointments = [];
   }
+// function returns all appointments
+  public all(): Appointment[] {
+    return this.appointments;
+  }
+
 // make var public order to be used on appointments.routes
   public findByDate(date: Date): Appointment | null {
       // this var saves finds appointments returns True, otherwise 'null'
