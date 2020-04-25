@@ -18,3 +18,8 @@ class Appointment {
 export default Appointment;
 
 // this model will be exported to ' /appointments.rutes'
+
+/**
+ *  Routes are responsable recieve req, call data and give res only';
+ *  how data has to be saved
+ */
