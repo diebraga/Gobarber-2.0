@@ -11,7 +11,7 @@ appointmentsRouter.get('/', (req, res) => {
   const appointments = appointmentsRepository.all();
 
   return res.json(appointmentsRepository);
-})
+});
 
 appointmentsRouter.post('/', (req, res) => {
   try {
@@ -19,13 +19,13 @@ appointmentsRouter.post('/', (req, res) => {
 
     // date will be formated to the begining of hour ex: 13:00 in this var
     // date will be coerted in New Date() in this var
-      const formatedDate = parseISO(date);
+    const formatedDate = parseISO(date);
 
-      const createAppointment = new CreateAppointmentService(appointmentsRepository);
+    const createAppointment = new CreateAppointmentService(appointmentsRepository);
 
-      const appointment =createAppointment.execute({ date: formatedDate, provider })
+    const appointment = createAppointment.execute({ date: formatedDate, provider });
 
-      return res.json(appointment);
+    return res.json(appointment);
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
@@ -37,4 +37,3 @@ export default appointmentsRouter;
  *  Route will be responsable transform data, request
  *  from services, repo and response only.
  */
-
