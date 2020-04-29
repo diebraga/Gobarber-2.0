@@ -37,3 +37,7 @@ export default appointmentsRouter;
  *  Route will be responsable transform data, request
  *  from services, repo and response only.
  */
+/**
+ *  Routes are responsable recieve req, call data and give res only';
+ *  how data has to be saved
+ */

@@ -1,7 +1,6 @@
 import { isEqual } from 'date-fns';
-// defining 'types' from '../models' of values in the vars down bellow
 import Appointment from '../models/Appointment';
-
+// defining 'types' from '../models' of values in the vars down bellow
 
 /**
  * Define types of params in a Data transfer object DTO
@@ -20,17 +19,16 @@ class AppointmentsRepository {
   constructor() {
     this.appointments = [];
   }
-// function returns all appointments
+
+  // function returns all appointments
   public all(): Appointment[] {
     return this.appointments;
   }
 
-// make var public order to be used on appointments.routes
+  // make var public order to be used on appointments.routes
   public findByDate(date: Date): Appointment | null {
-      // this var saves finds appointments returns True, otherwise 'null'
-  const findAppointment = this.appointments.find(appointment =>
-    isEqual(date, appointment.date),
-  );
+    // this var saves finds appointments returns True, otherwise 'null'
+    const findAppointment = this.appointments.find((appointment) => isEqual(date, appointment.date));
     return findAppointment || null;
   }
 
@@ -38,8 +36,8 @@ class AppointmentsRepository {
    *  declared 'types' down bellow with param insinde 'CreateAppointmentDTO
    *  'public' can be used out the class;
    *  */
-    public create({ provider, date }: CreateAppointmentDTO): Appointment {
-    const appointment = new Appointment({provider, date});
+  public create({ provider, date }: CreateAppointmentDTO): Appointment {
+    const appointment = new Appointment({ provider, date });
 
     this.appointments.push(appointment);
 
