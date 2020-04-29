@@ -24,11 +24,11 @@ Node.js API built with Express using the best pratices and design patterns.
 
 ## Features
 
-- ✅ **Typescript** — Microframework for Node.js
+- ✅ **Typescript** — Typed superset of JavaScript
 - ✅ **Express** — Microframework for Node.js
 - ✅ **Lint** — ESlint/Prettier/Editor Config
-- ✅ **Date-fns** — Microframework for Node.js
-- ✅ **Uuidv4** — Microframework for Node.js
+- ✅ **Date-fns** — Modern JavaScript date utility library
+- ✅ **Uuidv4** — Unic Universal ID creator
 
 ## How it works
 
