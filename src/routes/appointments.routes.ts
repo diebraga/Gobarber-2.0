@@ -1,29 +1,28 @@
 import { Router } from 'express';
+import { getCustomRepository } from 'typeorm';
 import { parseISO } from 'date-fns';
 
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentServices';
 
 const appointmentsRouter = Router();
-const appointmentsRepository = new AppointmentsRepository();
 
-appointmentsRouter.get('/', (req, res) => {
-  const appointments = appointmentsRepository.all();
+appointmentsRouter.get('/', async (req, res) => {
+  const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+  const appointments = await appointmentsRepository.find();
 
-  return res.json(appointmentsRepository);
+  return res.json(appointments);
 });
 
-appointmentsRouter.post('/', (req, res) => {
+appointmentsRouter.post('/', async (req, res) => {
   try {
     const { provider, date } = req.body;
 
-    // date will be formated to the begining of hour ex: 13:00 in this var
-    // date will be coerted in New Date() in this var
     const formatedDate = parseISO(date);
 
-    const createAppointment = new CreateAppointmentService(appointmentsRepository);
+    const createAppointment = new CreateAppointmentService();
 
-    const appointment = createAppointment.execute({ date: formatedDate, provider });
+    const appointment = await createAppointment.execute({ date: formatedDate, provider });
 
     return res.json(appointment);
   } catch (err) {
