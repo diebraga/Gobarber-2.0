@@ -19,6 +19,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "camelcase":"off",
       "class-methods-use-this": "off",
       "import/extensions": [
         "error",
