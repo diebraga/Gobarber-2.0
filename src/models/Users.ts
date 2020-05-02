@@ -3,7 +3,7 @@ import {
 } from 'typeorm';
 
 @Entity('users')
-class Appointment {
+class Users {
   @PrimaryColumn('uuid')
   id: string;
 
@@ -23,7 +23,7 @@ class Appointment {
   updated_at: Date;
 }
 
-export default Appointment;
+export default Users;
 
 /**
  *  @Entity above the class reppresents that bellow
