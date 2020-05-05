@@ -35,3 +35,8 @@ class CreateAppointmentService {
 }
 
 export default CreateAppointmentService;
+
+/**
+ *  your services will store all your code logics
+ *  'if's etc...
+ */
