@@ -37,7 +37,7 @@ appointmentsRouter.post('/', async (req, res) => {
 export default appointmentsRouter;
 
 /**
- *  Route will be responsable transform data, request
+ *  Route is responsable transform data, request
  *  from services, repo and response only.
  */
 /**
