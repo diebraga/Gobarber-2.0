@@ -2,6 +2,8 @@ import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
 
+import AppError from '../errors/AppError';
+
 import multerConfig from '../config/multerConfig';
 import User from '../models/Users';
 
@@ -17,7 +19,7 @@ export default class UpdateUserAvatarService {
     const user = await usersRepository.findOne(user_id);
 
     if (!user) {
-      throw new Error('Authenticated users only!');
+      throw new AppError('Authenticated users only!', 401);
     }
 
     if (user.avatar) {

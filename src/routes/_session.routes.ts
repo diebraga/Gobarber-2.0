@@ -5,22 +5,18 @@ import AuthUserService from '../services/AuthUserService';
 const SessionRouter = Router();
 
 SessionRouter.post('/', async (req, res) => {
-  try {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    const AuthUser = new AuthUserService();
+  const AuthUser = new AuthUserService();
 
-    const { user, token } = await AuthUser.execute({
-      email,
-      password,
-    });
+  const { user, token } = await AuthUser.execute({
+    email,
+    password,
+  });
 
-    delete user.password;
+  delete user.password;
 
-    return res.json({ user, token });
-  } catch (err) {
-    return res.status(400).json({ error: err.message });
-  }
+  return res.json({ user, token });
 });
 
 export default SessionRouter;
